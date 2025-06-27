@@ -1,0 +1,360 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  --radius: 0.75rem;
+  
+  /* Solarized Light Mode - Base Colors */
+  --solarized-base03: #002b36;  /* darkest blue-green */
+  --solarized-base02: #073642;  /* dark blue-green */
+  --solarized-base01: #586e75;  /* dark gray */
+  --solarized-base00: #657b83;  /* darker gray */
+  --solarized-base0: #839496;   /* medium gray */
+  --solarized-base1: #93a1a1;   /* light gray */
+  --solarized-base2: #eee8d5;   /* light cream */
+  --solarized-base3: #fdf6e3;   /* cream white */
+  
+  /* Solarized Accent Colors */
+  --solarized-blue: #268bd2;
+  --solarized-cyan: #2aa198;
+  --solarized-green: #859900;
+  --solarized-yellow: #b58900;
+  --solarized-orange: #cb4b16;
+  --solarized-red: #dc322f;
+  --solarized-magenta: #d33682;
+  --solarized-violet: #6c71c4;
+  
+  /* Light Mode Theme Variables */
+  --background: var(--solarized-base3);
+  --foreground: var(--solarized-base03);
+  --card: var(--solarized-base2);
+  --card-foreground: var(--solarized-base03);
+  --popover: var(--solarized-base2);
+  --popover-foreground: var(--solarized-base03);
+  --primary: var(--solarized-blue);
+  --primary-foreground: var(--solarized-base3);
+  --secondary: var(--solarized-base2);
+  --secondary-foreground: var(--solarized-base00);
+  --muted: var(--solarized-base2);
+  --muted-foreground: var(--solarized-base1);
+  --accent: var(--solarized-cyan);
+  --accent-foreground: var(--solarized-base3);
+  --destructive: var(--solarized-red);
+  --destructive-foreground: var(--solarized-base3);
+  --success: var(--solarized-green);
+  --success-foreground: var(--solarized-base3);
+  --warning: var(--solarized-yellow);
+  --warning-foreground: var(--solarized-base03);
+  --border: color-mix(in srgb, var(--solarized-base01) 30%, transparent);
+  --border-strong: color-mix(in srgb, var(--solarized-base01) 50%, transparent);
+  --input: var(--solarized-base2);
+  --ring: var(--solarized-blue);
+  --elevated: #e8dcc0;
+  
+  /* Glassmorphism */
+  --glass-bg: color-mix(in srgb, var(--solarized-base2) 80%, transparent);
+  --glass-border: color-mix(in srgb, var(--solarized-base01) 20%, transparent);
+  
+  /* Text Hierarchy */
+  --text-primary: var(--solarized-base03);
+  --text-secondary: var(--solarized-base00);
+  --text-tertiary: var(--solarized-base0);
+  --text-subtle: var(--solarized-base01);
+  --text-muted: var(--solarized-base1);
+}
+
+/* Dark Mode */
+.dark {
+  --background: var(--solarized-base03);
+  --foreground: var(--solarized-base3);
+  --card: var(--solarized-base02);
+  --card-foreground: var(--solarized-base3);
+  --popover: var(--solarized-base02);
+  --popover-foreground: var(--solarized-base3);
+  --primary: var(--solarized-blue);
+  --primary-foreground: var(--solarized-base3);
+  --secondary: var(--solarized-base02);
+  --secondary-foreground: var(--solarized-base3);
+  --muted: var(--solarized-base02);
+  --muted-foreground: var(--solarized-base0);
+  --accent: var(--solarized-cyan);
+  --accent-foreground: var(--solarized-base3);
+  --destructive: var(--solarized-red);
+  --destructive-foreground: var(--solarized-base3);
+  --success: var(--solarized-green);
+  --success-foreground: var(--solarized-base3);
+  --warning: var(--solarized-yellow);
+  --warning-foreground: var(--solarized-base03);
+  --border: color-mix(in srgb, var(--solarized-base1) 30%, transparent);
+  --border-strong: color-mix(in srgb, var(--solarized-base1) 50%, transparent);
+  --input: var(--solarized-base02);
+  --ring: var(--solarized-blue);
+  --elevated: #0c4a5a;
+  
+  /* Dark Mode Glassmorphism */
+  --glass-bg: color-mix(in srgb, var(--solarized-base02) 80%, transparent);
+  --glass-border: color-mix(in srgb, var(--solarized-base1) 20%, transparent);
+  
+  /* Dark Mode Text Hierarchy */
+  --text-primary: var(--solarized-base3);
+  --text-secondary: var(--solarized-base0);
+  --text-tertiary: var(--solarized-base01);
+  --text-subtle: var(--solarized-base2);
+  --text-muted: var(--solarized-base00);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Color mappings for Tailwind */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Custom Solarized Colors */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-elevated: var(--elevated);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  
+  /* Text Hierarchy Colors */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-subtle: var(--text-subtle);
+  --color-text-muted: var(--text-muted);
+  
+  /* Solarized Accent Palette */
+  --color-solarized-blue: var(--solarized-blue);
+  --color-solarized-cyan: var(--solarized-cyan);
+  --color-solarized-green: var(--solarized-green);
+  --color-solarized-yellow: var(--solarized-yellow);
+  --color-solarized-orange: var(--solarized-orange);
+  --color-solarized-red: var(--solarized-red);
+  --color-solarized-magenta: var(--solarized-magenta);
+  --color-solarized-violet: var(--solarized-violet);
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    @apply border-border;
+    outline-color: rgb(from var(--ring) r g b / 50%);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgb(from var(--accent) r g b / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgb(from var(--primary) r g b / 0.05) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  
+  h1 { @apply text-3xl lg:text-4xl; }
+  h2 { @apply text-2xl lg:text-3xl; }
+  h3 { @apply text-xl lg:text-2xl; }
+  h4 { @apply text-lg lg:text-xl; }
+  h5 { @apply text-base lg:text-lg; }
+  h6 { @apply text-sm lg:text-base; }
+  
+  p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  
+  a {
+    color: var(--solarized-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  a:hover {
+    color: var(--solarized-cyan);
+    text-decoration: underline;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Glass Effect Utility */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  /* Enhanced Cards */
+  .card {
+    @apply bg-card text-card-foreground rounded-lg border shadow-sm;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 10px 25px rgb(from var(--foreground) r g b / 0.1),
+      0 4px 12px rgb(from var(--accent) r g b / 0.1);
+  }
+  
+  /* Button Enhancements */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground rounded-lg px-4 py-2 font-medium;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow: 0 4px 12px rgb(from var(--primary) r g b / 0.3);
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgb(from var(--primary) r g b / 0.4);
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground rounded-lg px-4 py-2 font-medium;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--elevated);
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+  }
+  
+  .btn-outline {
+    @apply bg-transparent text-foreground rounded-lg px-4 py-2 font-medium;
+    border: 1px solid var(--border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+  }
+  
+  .btn-outline:hover {
+    background: var(--accent);
+    color: var(--accent-foreground);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  
+  /* Input Enhancements */
+  .input {
+    @apply bg-input text-foreground rounded-lg px-3 py-2;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 3px rgb(from var(--ring) r g b / 0.1);
+  }
+  
+  /* Status Colors */
+  .status-success { color: var(--success); }
+  .status-warning { color: var(--warning); }
+  .status-error { color: var(--destructive); }
+  .status-info { color: var(--solarized-cyan); }
+  
+  .bg-success { 
+    background: linear-gradient(135deg, var(--success), var(--solarized-cyan));
+    color: var(--success-foreground);
+  }
+  .bg-warning { 
+    background: linear-gradient(135deg, var(--warning), var(--solarized-orange));
+    color: var(--warning-foreground);
+  }
+  .bg-error { 
+    background: linear-gradient(135deg, var(--destructive), var(--solarized-magenta));
+    color: var(--destructive-foreground);
+  }
+  
+  /* Text Hierarchy Classes */
+  .text-primary { color: var(--text-primary); }
+  .text-secondary { color: var(--text-secondary); }
+  .text-tertiary { color: var(--text-tertiary); }
+  .text-subtle { color: var(--text-subtle); }
+  .text-muted { color: var(--text-muted); }
+  
+  /* Elevated Surfaces */
+  .surface-elevated {
+    background: var(--elevated);
+    border: 1px solid var(--border-strong);
+  }
+}
+
+/* Legacy button support */
+button {
+  border-radius: var(--radius);
+  border: 1px solid black;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Animations */
+@keyframes solarized-glow {
+  0%, 100% { box-shadow: 0 0 5px rgb(from var(--accent) r g b / 0.5); }
+  50% { box-shadow: 0 0 20px rgb(from var(--accent) r g b / 0.8), 0 0 30px rgb(from var(--primary) r g b / 0.3); }
+}
+
+.animate-glow {
+  animation: solarized-glow 2s ease-in-out infinite;
+}
